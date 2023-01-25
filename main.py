@@ -6,6 +6,7 @@ pdf = FPDF(orientation='P', unit="mm", format="A4")
 
 df = pd.read_csv('topics.csv')
 
+# Master Page Adding
 for index, row in df.iterrows():
     pdf.add_page()
 
@@ -16,4 +17,8 @@ for index, row in df.iterrows():
     # adding a line
     pdf.line(10, 21, 200, 21)
 
+
+    # Iterate on Ranges
+    for i in range(row["Pages"]-1):
+        pdf.add_page()
 pdf.output("Output.pdf")
